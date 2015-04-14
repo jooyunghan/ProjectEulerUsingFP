@@ -182,6 +182,21 @@ public abstract class Stream<A> {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Stream)) return false;
+        Stream<A> that = (Stream<A>) o;
+        Stream<A> self = this;
+        while (!self.isEmpty() && !that.isEmpty()) {
+            if (!self.head().equals(that.head()))
+                return false;
+            self = self.tail();
+            that = that.tail();
+        }
+        return self.isEmpty() && that.isEmpty();
+    }
+
     static class Cons<A> extends Stream<A> {
         private S<A> head;
         private S<Stream<A>> tail;

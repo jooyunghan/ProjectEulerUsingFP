@@ -18,6 +18,10 @@ public class Option<A> {
         return isSome() ? some(f.apply(get())) : none();
     }
 
+    public <B> Option<B> flatMap(F1<A, Option<B>> f) {
+        return isSome() ? f.apply(get()) : none();
+    }
+
     public boolean isSome() {
         return a != null;
     }
