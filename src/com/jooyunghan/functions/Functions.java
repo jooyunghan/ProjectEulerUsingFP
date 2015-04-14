@@ -7,4 +7,8 @@ public class Functions {
     public static <A> F1<A, Boolean> equalTo(A a) {
         return x -> a.equals(x);
     }
+
+    public static <A> F1<A, Boolean> not(F1<A, Boolean> f) {
+        return a -> !f.apply(a);
+    }
 }

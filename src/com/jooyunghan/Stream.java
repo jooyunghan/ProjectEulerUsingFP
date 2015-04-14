@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static com.jooyunghan.Option.none;
+import static com.jooyunghan.Option.some;
 import static com.jooyunghan.Pair.p;
 import static com.jooyunghan.functions.Functions.equalTo;
+import static com.jooyunghan.functions.Functions.not;
 
 /**
  * Created by jooyung.han on 4/13/15.
@@ -28,6 +31,10 @@ public abstract class Stream<A> {
 
     public static <A> Stream<A> stream(A... as) {
         return stream0(0, as);
+    }
+
+    public static <A> Stream<A> stream(Iterable<A> i) {
+        return unfold(i.iterator(), it -> it.hasNext() ? some(p(it.next(), it)) : none());
     }
 
     private static <A> Stream<A> stream0(int offset, A... as) {
@@ -51,6 +58,11 @@ public abstract class Stream<A> {
         return cons(() -> a, () -> iterate(f.apply(a), f));
     }
 
+    public static <A, B> Stream<A> unfold(B b, F1<B, Option<Pair<A, B>>> f) {
+        Option<Pair<A, B>> result = f.apply(b);
+        return result.map(pair -> cons(() -> pair._1, () -> unfold(pair._2, f))).getOrElse(() -> empty());
+    }
+
     public void each(A1<A> f) {
         Stream<A> c = this;
         while (!c.isEmpty()) {
@@ -71,17 +83,17 @@ public abstract class Stream<A> {
         return (isEmpty()) ? empty() : cons(() -> f.apply(head()), () -> tail().map(f));
     }
 
+    public <B, C> Stream<C> zip(Stream<B> bs, F2<A, B, C> f) {
+        return (isEmpty() || bs.isEmpty()) ? empty() : cons(() -> f.apply(head(), bs.head()), () -> tail().zip(bs.tail(), f));
+    }
+
+    public <B> Stream<B> pairs(F2<A, A, B> f) {
+        return zip(tail(), f);
+    }
+
     public Stream<A> filter(F1<A, Boolean> f) {
-        Stream<A> c = this;
-        while (!c.isEmpty()) {
-            if (f.apply(c.head())) {
-                A head = c.head();
-                Stream<A> tail = c.tail();
-                return cons(() -> head, () -> tail.filter(f));
-            }
-            c = c.tail();
-        }
-        return empty();
+        Stream<A> c = dropWhile(not(f));
+        return c.isEmpty() ? empty() : cons(() -> c.head(), () -> c.tail().filter(f));
     }
 
     public Stream<A> take(int n) {
@@ -128,6 +140,18 @@ public abstract class Stream<A> {
             c = c.tail();
         }
         return b;
+    }
+
+    public A foldLeft(F2<A, A, A> f) {
+        return tail().foldLeft(head(), f);
+    }
+
+    public <B> B foldRight(S<B> b, F2<A, S<B>, B> f) {
+        return isEmpty() ? b.apply() : f.apply(head(), () -> tail().foldRight(b, f));
+    }
+
+    public A foldRight(F2<A, S<A>, A> f) {
+        return tail().isEmpty() ? head() : f.apply(head(), () -> tail().foldRight(f));
     }
 
     public int length() {
