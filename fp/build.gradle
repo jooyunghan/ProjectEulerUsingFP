@@ -1,0 +1,17 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.0.1'
+    }
+}
+
+// Required because retrolambda is on maven central
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'

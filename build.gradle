@@ -1,0 +1,11 @@
+apply plugin: 'idea'
+
+apply plugin: 'java'
+
+apply plugin: 'application'
+
+mainClassName = 'com.jooyunghan.Main'
+
+dependencies {
+    compile project('fp')
+}
