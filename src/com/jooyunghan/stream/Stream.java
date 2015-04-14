@@ -1,5 +1,7 @@
-package com.jooyunghan;
+package com.jooyunghan.stream;
 
+import com.jooyunghan.Option;
+import com.jooyunghan.Pair;
 import com.jooyunghan.functions.A1;
 import com.jooyunghan.functions.F1;
 import com.jooyunghan.functions.F2;

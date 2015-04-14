@@ -1,30 +1,29 @@
 package com.jooyunghan;
 
+import com.jooyunghan.stream.Stream;
+import com.jooyunghan.stream.Strings;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static com.jooyunghan.Pair.p;
-import static com.jooyunghan.Stream.iterate;
-import static com.jooyunghan.Stream.stream;
-import static com.jooyunghan.Streams.lines;
-import static com.jooyunghan.Streams.words;
+import static com.jooyunghan.stream.Stream.iterate;
+import static com.jooyunghan.stream.Stream.stream;
+import static com.jooyunghan.stream.Strings.lines;
+import static com.jooyunghan.stream.Strings.words;
 
 /**
  * Created by jooyung.han on 4/14/15.
  */
-public class Euler {
+public class Eulers {
     public static boolean isPalindrome(int n) {
         return isPalindrome(Integer.toString(n));
     }
 
     public static boolean isPalindrome(String s) {
-        return s.equals(reverse(s));
-    }
-
-    public static String reverse(String s) {
-        return new StringBuilder(s).reverse().toString();
+        return s.equals(Strings.reverse(s));
     }
 
     public static Stream<Integer> fibonacci() {
@@ -47,4 +46,5 @@ public class Euler {
     public static Stream<Stream<Integer>> readString(String content) {
         return lines(content).map(line -> words(line).map(Integer::parseInt));
     }
+
 }

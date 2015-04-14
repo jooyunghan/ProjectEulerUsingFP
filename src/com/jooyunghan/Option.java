@@ -39,4 +39,25 @@ public class Option<A> {
             throw new NullPointerException();
         return new Option(a);
     }
+
+    @Override
+    public String toString() {
+        return "Option{" + a + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Option<?> option = (Option<?>) o;
+
+        return !(a != null ? !a.equals(option.a) : option.a != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return a != null ? a.hashCode() : 0;
+    }
 }

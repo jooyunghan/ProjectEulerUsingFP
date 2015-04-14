@@ -1,11 +1,14 @@
 package com.jooyunghan;
 
+import com.jooyunghan.functions.Functions;
+import com.jooyunghan.stream.Integers;
+import com.jooyunghan.stream.Stream;
+
 import java.util.List;
 
-import static com.jooyunghan.Euler.*;
-import static com.jooyunghan.Stream.iterate;
-import static com.jooyunghan.Stream.stream;
-import static com.jooyunghan.Streams.*;
+import static com.jooyunghan.Eulers.*;
+import static com.jooyunghan.stream.Stream.iterate;
+import static com.jooyunghan.stream.Stream.stream;
 
 public class Main {
 
@@ -24,15 +27,15 @@ public class Main {
 
     private static int euler2() {
         Stream<Integer> fibo = fibonacci();
-        return fibo.filter(x -> x % 2 == 0).takeWhile(x -> x < 4_000_000).foldLeft(add());
+        return fibo.filter(x -> x % 2 == 0).takeWhile(x -> x < 4_000_000).foldLeft(Functions.add());
     }
 
     private static int euler4() {
-        return range(100, 999).flatMap(n -> range(n, 999).map(m -> n * m).filter(x -> isPalindrome(x))).foldLeft(max());
+        return Integers.range(100, 999).flatMap(n -> Integers.range(n, 999).map(m -> n * m).filter(x -> isPalindrome(x))).foldLeft(Functions.max());
     }
 
     private static int euler9() {
-        return range(1, 332).flatMap(a -> range(a + 1, (1000-a)/2).filter(b -> isPythagorean(a, b, 1000 - a - b)).map(b -> a * b * (1000 - a - b))).head();
+        return Integers.range(1, 332).flatMap(a -> Integers.range(a + 1, (1000 - a) / 2).filter(b -> isPythagorean(a, b, 1000 - a - b)).map(b -> a * b * (1000 - a - b))).head();
     }
 
     private static int euler18_67() {
@@ -61,6 +64,6 @@ public class Main {
 //                "04 62 98 27 23 09 70 98 73 93 38 53 60 04 23");
 
         Stream<Stream<Integer>> data = readFile("p067_triangle.txt");
-        return data.foldRight((prev, next) -> prev.zip(next.apply().pairs(max()), add())).head();
+        return data.foldRight((prev, next) -> prev.zip(next.apply().pairs(Functions.max()), Functions.add())).head();
     }
 }
