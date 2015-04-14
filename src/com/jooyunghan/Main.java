@@ -2,11 +2,17 @@ package com.jooyunghan;
 
 import static com.jooyunghan.Pair.p;
 import static com.jooyunghan.Stream.iterate;
+import static com.jooyunghan.Stream.stream;
 
 public class Main {
 
     public static void main(String[] args) {
-        euler2();
+        ant();
+    }
+
+    private static void ant() {
+        Stream<Stream<Integer>> ants = iterate(stream(1), s -> s.group().flatMap(g -> stream(g.length(), g.head())));
+        System.out.println(ants.get(1000_000).take(100).asList());
     }
 
     private static void euler2() {
