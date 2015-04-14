@@ -1,6 +1,6 @@
-package com.jooyunghan.stream;
+package com.jooyunghan.fp.stream;
 
-import static com.jooyunghan.stream.Stream.iterate;
+import static com.jooyunghan.fp.stream.Stream.iterate;
 
 /**
  * Created by jooyung.han on 4/14/15.

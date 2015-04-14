@@ -1,18 +1,18 @@
 package com.jooyunghan;
 
-import com.jooyunghan.stream.Stream;
-import com.jooyunghan.stream.Strings;
+import com.jooyunghan.fp.stream.Stream;
+import com.jooyunghan.fp.stream.Strings;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.jooyunghan.Pair.p;
-import static com.jooyunghan.stream.Stream.iterate;
-import static com.jooyunghan.stream.Stream.stream;
-import static com.jooyunghan.stream.Strings.lines;
-import static com.jooyunghan.stream.Strings.words;
+import static com.jooyunghan.fp.Pair.p;
+import static com.jooyunghan.fp.stream.Stream.iterate;
+import static com.jooyunghan.fp.stream.Stream.stream;
+import static com.jooyunghan.fp.stream.Strings.lines;
+import static com.jooyunghan.fp.stream.Strings.words;
 
 /**
  * Created by jooyung.han on 4/14/15.

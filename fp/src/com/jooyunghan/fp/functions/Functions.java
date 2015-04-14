@@ -1,4 +1,4 @@
-package com.jooyunghan.functions;
+package com.jooyunghan.fp.functions;
 
 /**
  * Created by jooyung.han on 4/14/15.

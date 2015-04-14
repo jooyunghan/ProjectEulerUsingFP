@@ -1,6 +1,6 @@
-package com.jooyunghan.stream;
+package com.jooyunghan.fp.stream;
 
-import static com.jooyunghan.stream.Stream.stream;
+import static com.jooyunghan.fp.stream.Stream.stream;
 
 /**
  * Created by jooyung.han on 4/14/15.

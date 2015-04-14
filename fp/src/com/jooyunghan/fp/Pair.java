@@ -1,4 +1,4 @@
-package com.jooyunghan;
+package com.jooyunghan.fp;
 
 /**
  * Created by jooyung.han on 4/13/15.
@@ -18,7 +18,7 @@ public class Pair<A, B> {
 
     @Override
     public String toString() {
-        return "Pair{" +
+        return "com.jooyunghan.fp.Pair{" +
                 "_1=" + _1 +
                 ", _2=" + _2 +
                 '}';

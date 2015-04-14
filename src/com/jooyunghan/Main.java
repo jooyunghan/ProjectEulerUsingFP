@@ -1,28 +1,26 @@
 package com.jooyunghan;
 
-import com.jooyunghan.functions.Functions;
-import com.jooyunghan.stream.Integers;
-import com.jooyunghan.stream.Stream;
-
-import java.util.List;
+import com.jooyunghan.fp.functions.Functions;
+import com.jooyunghan.fp.stream.Integers;
+import com.jooyunghan.fp.stream.Stream;
 
 import static com.jooyunghan.Eulers.*;
-import static com.jooyunghan.stream.Stream.iterate;
-import static com.jooyunghan.stream.Stream.stream;
+import static com.jooyunghan.fp.stream.Stream.iterate;
+import static com.jooyunghan.fp.stream.Stream.stream;
 
 public class Main {
 
     public static void main(String[] args) {
-        //System.out.println(ant());
+        System.out.println(ant());
         System.out.println(euler2());
         System.out.println(euler4());
         System.out.println(euler9());
         System.out.println(euler18_67());
     }
 
-    private static List<Integer> ant() {
+    private static Integer ant() {
         Stream<Stream<Integer>> ants = iterate(stream(1), s -> s.group().flatMap(g -> stream(g.length(), g.head())));
-        return ants.get(1_000_000).take(10).asList();
+        return ants.get(1_000_000).get(1_000_000);
     }
 
     private static int euler2() {

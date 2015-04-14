@@ -1,27 +1,26 @@
-package com.jooyunghan.stream;
+package com.jooyunghan.fp.stream;
 
-import com.jooyunghan.Option;
-import com.jooyunghan.Pair;
-import com.jooyunghan.functions.A1;
-import com.jooyunghan.functions.F1;
-import com.jooyunghan.functions.F2;
-import com.jooyunghan.functions.S;
+
+import com.jooyunghan.fp.Option;
+import com.jooyunghan.fp.Pair;
+import com.jooyunghan.fp.functions.A1;
+import com.jooyunghan.fp.functions.F1;
+import com.jooyunghan.fp.functions.F2;
+import com.jooyunghan.fp.functions.S;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static com.jooyunghan.Option.none;
-import static com.jooyunghan.Option.some;
-import static com.jooyunghan.Pair.p;
-import static com.jooyunghan.functions.Functions.equalTo;
-import static com.jooyunghan.functions.Functions.not;
+import static com.jooyunghan.fp.Option.none;
+import static com.jooyunghan.fp.Option.some;
+import static com.jooyunghan.fp.Pair.p;
+import static com.jooyunghan.fp.functions.Functions.equalTo;
+import static com.jooyunghan.fp.functions.Functions.not;
 
 /**
  * Created by jooyung.han on 4/13/15.
  */
-
-
 public abstract class Stream<A> {
     final static Empty EMPTY = new Empty();
 

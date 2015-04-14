@@ -1,7 +1,7 @@
-package com.jooyunghan;
+package com.jooyunghan.fp;
 
-import com.jooyunghan.functions.F1;
-import com.jooyunghan.functions.S;
+import com.jooyunghan.fp.functions.F1;
+import com.jooyunghan.fp.functions.S;
 
 /**
  * Created by jooyung.han on 4/14/15.
@@ -42,7 +42,7 @@ public class Option<A> {
 
     @Override
     public String toString() {
-        return "Option{" + a + '}';
+        return "com.jooyunghan.fp.Option{" + a + '}';
     }
 
     @Override
