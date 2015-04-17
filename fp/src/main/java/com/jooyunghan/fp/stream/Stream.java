@@ -19,6 +19,10 @@ import static com.jooyunghan.fp.functions.Functions.equalTo;
 import static com.jooyunghan.fp.functions.Functions.not;
 
 /**
+ * Lazy linked list of type T.
+ *
+ * To make a stream, <code>Stream.cons(()->head, ()->tail)</code>
+ *
  * Created by jooyung.han on 4/13/15.
  */
 public abstract class Stream<A> {
