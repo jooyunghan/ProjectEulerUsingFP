@@ -116,6 +116,14 @@ public abstract class Stream<A> {
             return empty();
         }
     }
+    
+    public Stream<A> drop(int n) {
+        Stream<A> c = this;
+        while (n-- > 0) {
+            c = c.tail();
+        }
+        return c;
+    }
 
     public Stream<A> dropWhile(F1<A, Boolean> f) {
         Stream<A> c = this;
@@ -170,14 +178,7 @@ public abstract class Stream<A> {
     }
 
     public A get(int n) {
-        Stream<A> c = this;
-        while (!c.isEmpty() && n > 0) {
-            n--;
-            c = c.tail();
-        }
-        if (c.isEmpty())
-            throw new NoSuchElementException();
-        return c.head();
+        return drop(n).head();
     }
 
     public List<A> asList() {
@@ -208,7 +209,6 @@ public abstract class Stream<A> {
         private Stream<A> tail_;
 
         public Cons(S<A> head, S<Stream<A>> tail) {
-
             this.head = head;
             this.tail = tail;
         }
